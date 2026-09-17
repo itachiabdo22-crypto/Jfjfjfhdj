@@ -1,0 +1,1557 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>إلى رانيا 🤍</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+    margin:0;
+    padding:0;
+    width:100%;
+    min-height:100%;
+    font-family:Tahoma,Arial,sans-serif;
+    background:#090510;
+    color:white;
+    overflow:hidden;
+}
+
+button,input{
+    font-family:inherit;
+}
+
+#app{
+    width:100%;
+    min-height:100vh;
+    position:relative;
+    overflow:hidden;
+}
+
+.screen{
+    position:absolute;
+    inset:0;
+    min-height:100vh;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    padding:22px;
+    overflow-y:auto;
+    overflow-x:hidden;
+}
+
+.screen.active{
+    display:flex;
+    animation:screenIn .8s ease;
+}
+
+@keyframes screenIn{
+    from{
+        opacity:0;
+        transform:scale(1.03);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+/* الخلفيات */
+
+.bg1{
+    background:
+    radial-gradient(circle at 50% 25%,rgba(255,80,170,.28),transparent 35%),
+    linear-gradient(135deg,#120718,#260b25,#090510);
+}
+
+.bg2{
+    background:
+    radial-gradient(circle at 50% 40%,rgba(255,70,170,.3),transparent 38%),
+    linear-gradient(180deg,#17071d,#3b0c35,#090510);
+}
+
+.bg3{
+    background:
+    radial-gradient(circle at 50% 30%,rgba(255,170,220,.22),transparent 35%),
+    linear-gradient(145deg,#190817,#4a123f,#0c0613);
+}
+
+.bg4{
+    background:
+    radial-gradient(circle at 20% 20%,rgba(255,110,190,.18),transparent 25%),
+    radial-gradient(circle at 80% 70%,rgba(190,90,255,.16),transparent 30%),
+    linear-gradient(180deg,#07040f,#16081e,#030207);
+}
+
+/* النجوم */
+
+.stars{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+}
+
+.star{
+    position:absolute;
+    width:3px;
+    height:3px;
+    background:white;
+    border-radius:50%;
+    box-shadow:0 0 10px white;
+    animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+    from{opacity:.2;transform:scale(.7)}
+    to{opacity:1;transform:scale(1.5)}
+}
+
+/* الجزيئات */
+
+.particles{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+}
+
+.heart,
+.petal{
+    position:absolute;
+    bottom:-40px;
+    animation:floatUp linear forwards;
+    opacity:0;
+    pointer-events:none;
+}
+
+.heart{
+    color:#ff6fae;
+    text-shadow:0 0 15px #ff4f9b;
+    font-size:18px;
+}
+
+.petal{
+    color:#ff9ac8;
+    font-size:20px;
+}
+
+@keyframes floatUp{
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
+    }
+    10%{opacity:.9}
+    90%{opacity:.8}
+    100%{
+        transform:translateY(-115vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* البطاقة */
+
+.card{
+    width:min(92vw,620px);
+    position:relative;
+    z-index:5;
+    text-align:center;
+    padding:30px 22px;
+    border:1px solid rgba(255,160,220,.25);
+    border-radius:30px;
+    background:rgba(15,5,18,.68);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    box-shadow:
+        0 20px 70px rgba(0,0,0,.5),
+        0 0 50px rgba(255,50,160,.12);
+}
+
+.kitty{
+    width:min(220px,58vw);
+    max-height:250px;
+    object-fit:contain;
+    display:block;
+    margin:0 auto 18px;
+    filter:drop-shadow(0 15px 25px rgba(255,60,160,.3));
+    animation:kittyFloat 4s ease-in-out infinite;
+}
+
+@keyframes kittyFloat{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-10px)}
+}
+
+h1{
+    margin:5px 0 12px;
+    font-size:clamp(30px,8vw,52px);
+    background:linear-gradient(90deg,#fff,#ffb8dc,#fff);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+h2{
+    font-size:clamp(24px,6vw,38px);
+    margin:8px 0 15px;
+}
+
+p{
+    line-height:2;
+    color:#f7dce9;
+    font-size:16px;
+}
+
+.name{
+    color:#ff8fc5;
+    text-shadow:0 0 20px rgba(255,100,180,.6);
+}
+
+.small{
+    color:#cbb4c6;
+    font-size:13px;
+}
+
+/* الأزرار */
+
+.btn{
+    border:0;
+    color:white;
+    background:linear-gradient(135deg,#ff3f98,#d91b76);
+    padding:15px 25px;
+    min-width:190px;
+    border-radius:999px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    margin:8px;
+    box-shadow:
+        0 10px 25px rgba(255,40,140,.25),
+        inset 0 1px rgba(255,255,255,.3);
+    transition:.2s;
+}
+
+.btn:active{
+    transform:scale(.94);
+}
+
+.btn.secondary{
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,180,220,.3);
+}
+
+.btn.yes{
+    background:linear-gradient(135deg,#ff4fa7,#ff197e);
+}
+
+.btn.no{
+    background:rgba(255,255,255,.07);
+}
+
+/* كلمة السر */
+
+.passwordBox{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    align-items:center;
+}
+
+input{
+    width:min(90%,360px);
+    background:rgba(0,0,0,.3);
+    border:1px solid rgba(255,150,210,.35);
+    border-radius:16px;
+    padding:15px;
+    color:white;
+    text-align:center;
+    font-size:18px;
+    outline:none;
+}
+
+input:focus{
+    border-color:#ff65ae;
+    box-shadow:0 0 20px rgba(255,60,160,.15);
+}
+
+#error{
+    color:#ff8bab;
+    min-height:25px;
+}
+
+/* الورود */
+
+.roses{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+    width:100%;
+    margin-top:20px;
+}
+
+.rose{
+    position:relative;
+    min-height:125px;
+    border-radius:22px;
+    border:1px solid rgba(255,160,210,.2);
+    background:rgba(255,255,255,.055);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    cursor:pointer;
+    transition:.3s;
+    overflow:hidden;
+}
+
+.rose:active{
+    transform:scale(.95);
+}
+
+.roseIcon{
+    font-size:40px;
+    filter:drop-shadow(0 0 12px rgba(255,70,170,.7));
+}
+
+.rose span{
+    font-size:13px;
+    color:#ffd8ea;
+    margin-top:6px;
+}
+
+/* النجوم */
+
+.dreamGrid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    margin-top:20px;
+}
+
+.dream{
+    position:relative;
+    height:145px;
+    border-radius:20px;
+    overflow:hidden;
+    border:1px solid rgba(255,180,230,.25);
+    cursor:pointer;
+    background:#160b1b;
+}
+
+.dream img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transition:.5s;
+}
+
+.dream::after{
+    content:"⭐";
+    position:absolute;
+    top:8px;
+    right:8px;
+    font-size:22px;
+    text-shadow:0 0 12px white;
+}
+
+.dream:active img{
+    transform:scale(1.08);
+}
+
+/* نافذة الرسائل */
+
+.modal{
+    position:fixed;
+    inset:0;
+    z-index:100;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    background:rgba(0,0,0,.72);
+    backdrop-filter:blur(8px);
+}
+
+.modal.show{
+    display:flex;
+    animation:fade .3s ease;
+}
+
+@keyframes fade{
+    from{opacity:0}
+    to{opacity:1}
+}
+
+.modalBox{
+    width:min(92vw,520px);
+    max-height:80vh;
+    overflow:auto;
+    background:linear-gradient(145deg,#2a0d28,#120613);
+    border:1px solid rgba(255,150,210,.3);
+    border-radius:28px;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 20px 80px rgba(0,0,0,.7);
+}
+
+.modalBox img{
+    width:min(180px,55vw);
+    height:180px;
+    object-fit:contain;
+}
+
+.close{
+    margin-top:10px;
+}
+
+/* الصندوق */
+
+.gift{
+    width:180px;
+    height:140px;
+    position:relative;
+    margin:30px auto;
+    cursor:pointer;
+    transition:.5s;
+}
+
+.giftBody{
+    position:absolute;
+    bottom:0;
+    left:10px;
+    width:160px;
+    height:100px;
+    background:linear-gradient(135deg,#ff65ae,#c51c70);
+    border-radius:8px 8px 18px 18px;
+    box-shadow:0 15px 30px rgba(255,30,140,.3);
+}
+
+.giftLid{
+    position:absolute;
+    top:25px;
+    left:0;
+    width:180px;
+    height:38px;
+    border-radius:10px;
+    background:linear-gradient(135deg,#ff8ac3,#dc287e);
+    z-index:3;
+    transition:.7s;
+}
+
+.ribbonV{
+    position:absolute;
+    top:25px;
+    bottom:0;
+    left:72px;
+    width:36px;
+    background:#ffd3e8;
+    z-index:2;
+}
+
+.ribbonH{
+    position:absolute;
+    top:62px;
+    left:10px;
+    width:160px;
+    height:22px;
+    background:#ffd3e8;
+    z-index:2;
+}
+
+.gift.open .giftLid{
+    transform:translateY(-75px) rotate(-8deg);
+}
+
+/* شاشة النهاية */
+
+.finalName{
+    font-size:clamp(45px,13vw,90px);
+    background:linear-gradient(90deg,#fff,#ff77b8,#fff);
+    -webkit-background-clip:text;
+    color:transparent;
+    text-shadow:0 0 40px rgba(255,60,170,.4);
+}
+
+.finalHeart{
+    font-size:70px;
+    animation:heartbeat 1.1s infinite;
+}
+
+@keyframes heartbeat{
+    0%,100%{transform:scale(1)}
+    15%{transform:scale(1.15)}
+    30%{transform:scale(1)}
+    45%{transform:scale(1.12)}
+}
+
+/* زر الموسيقى */
+
+.musicBtn{
+    position:fixed;
+    top:15px;
+    left:15px;
+    z-index:200;
+    width:46px;
+    height:46px;
+    border-radius:50%;
+    border:1px solid rgba(255,170,220,.35);
+    background:rgba(20,5,20,.7);
+    color:white;
+    font-size:20px;
+}
+
+/* شريط التقدم */
+
+.progress{
+    position:fixed;
+    top:0;
+    right:0;
+    height:3px;
+    background:#ff5cab;
+    z-index:250;
+    width:0%;
+    transition:.5s;
+}
+
+/* الهاتف */
+
+@media(max-width:430px){
+
+    .screen{
+        padding:15px;
+    }
+
+    .card{
+        padding:23px 15px;
+        border-radius:25px;
+    }
+
+    .kitty{
+        width:165px;
+        max-height:190px;
+    }
+
+    p{
+        font-size:14px;
+    }
+
+    .roses{
+        gap:9px;
+    }
+
+    .rose{
+        min-height:105px;
+    }
+
+    .dream{
+        height:125px;
+    }
+
+    .btn{
+        width:90%;
+        margin:6px auto;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="app">
+
+<div class="progress" id="progress"></div>
+
+<button class="musicBtn" id="musicBtn" onclick="toggleMusic()">🔇</button>
+
+<audio id="music" loop preload="auto">
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- ================= الشاشة 1 ================= -->
+
+<section class="screen active bg1" id="s1">
+
+    <div class="stars"></div>
+    <div class="particles"></div>
+
+    <div class="card">
+
+        <img src="kitty1.png"
+             class="kitty"
+             alt="Hello Kitty"
+             onerror="this.style.display='none'">
+
+        <div style="font-size:40px">🤍</div>
+
+        <h1>رانيا...</h1>
+
+        <p>
+            قبل أن تكملي، هناك شيء صغير أريدك أن تكتشفيه بنفسك...
+        </p>
+
+        <p class="small">
+            لا تحكمي على النهاية قبل أن تصلي إليها.
+        </p>
+
+        <button class="btn" onclick="startStory()">
+            ابدئي الحكاية 🎀
+        </button>
+
+    </div>
+</section>
+
+
+<!-- ================= الشاشة 2 ================= -->
+
+<section class="screen bg2" id="s2">
+
+    <div class="stars"></div>
+    <div class="particles"></div>
+
+    <div class="card">
+
+        <img src="kitty2.png"
+             class="kitty"
+             alt="Hello Kitty"
+             onerror="this.style.display='none'">
+
+        <h2>إلى <span class="name">رانيا</span> 🤍</h2>
+
+        <p>
+            هناك شخص واحد أردت أن أصنع له هذه الصفحة كاملة...
+        </p>
+
+        <h1 class="name">أنتِ.</h1>
+
+        <p>
+            وهذه ليست رسالة عادية...
+            هذه المرة سأدعك تكتشفينها خطوة بخطوة.
+        </p>
+
+        <button class="btn" onclick="go(3)">
+            أريد أن أعرف 🤍
+        </button>
+
+    </div>
+</section>
+
+
+<!-- ================= الشاشة 3 ================= -->
+
+<section class="screen bg3" id="s3">
+
+    <div class="particles"></div>
+
+    <div class="card">
+
+        <img src="kitty3.png"
+             class="kitty"
+             alt="Hello Kitty"
+             onerror="this.style.display='none'">
+
+        <div style="font-size:45px">🔐</div>
+
+        <h2>هناك شيء لا يعرفه أحد...</h2>
+
+        <p>
+            كلمة واحدة فقط تفتح هذه المرحلة.
+        </p>
+
+        <div class="passwordBox">
+
+            <input
+                id="password"
+                type="password"
+                placeholder="اكتبي كلمة السر">
+
+            <button class="btn" onclick="checkPassword()">
+                فتح القفل 🔓
+            </button>
+
+            <div id="error"></div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ================= الشاشة 4 ================= -->
+
+<section class="screen bg3" id="s4">
+
+    <div class="particles"></div>
+
+    <div class="card">
+
+        <img src="kitty4.png"
+             class="kitty"
+             alt="Hello Kitty"
+             onerror="this.style.display='none'">
+
+        <h2>عرفت أنكِ أنتِ 🤍</h2>
+
+        <p style="text-align:right">
+
+            رانيا...
+
+            <br><br>
+
+            أحيانًا نقول أشياء في لحظة خوف، ثم عندما تهدأ قلوبنا نكتشف أن الكلمات لم تستطع أن تشرح ما بداخلنا كما أردنا.
+
+            <br><br>
+
+            هناك أشياء كنت أريد أن أوضحها لكِ، ليس لأبرر كل شيء، وإنما لأنني أريد أن تكون الأمور بيننا أوضح وأهدأ.
+
+            <br><br>
+
+            عندما أغار أو أخاف عليكِ، فهذا لا يعني أنني أريد أن أتحكم في حياتك أو قراراتك.
+
+            <br><br>
+
+            أنتِ لكِ حياتك وقراراتك، وأنا لا أريد أن يتحول خوفي إلى شيء يضيق عليكِ.
+
+            <br><br>
+
+            أريد أن أتعلم كيف أجعل كل ما أشعر به شيئًا جميلًا، لا شيئًا يسبب لكِ الضغط.
+
+            <br><br>
+
+            والأهم أنني أريد أن نتعلم كيف نفهم بعضنا أكثر، حتى عندما نختلف.
+
+        </p>
+
+        <button class="btn" onclick="go(5)">
+            تابعي 🤍
+        </button>
+
+    </div>
+</section>
+
+
+<!-- ================= الشاشة 5 ================= -->
+
+<section class="screen bg2" id="s5">
+
+    <div class="particles"></div>
+
+    <div class="card">
+
+        <img src="kitty5.png"
+             class="kitty"
+             alt="Hello Kitty"
+             onerror="this.style.display='none'">
+
+        <h2>افتحي الورود 🌹</h2>
+
+        <p>
+            كل وردة تخفي رسالة صغيرة.
+        </p>
+
+        <div class="roses">
+
+            <div class="rose" onclick="openRose(1)">
+                <div class="roseIcon">🌹</div>
+                <span>الوردة الأولى</span>
+            </div>
+
+            <div class="rose" onclick="openRose(2)">
+                <div class="roseIcon">🌹</div>
+                <span>الوردة الثانية</span>
+            </div>
+
+            <div class="rose" onclick="openRose(3)">
+                <div class="roseIcon">🌹</div>
+                <span>الوردة الثالثة</span>
+            </div>
+
+            <div class="rose" onclick="openRose(4)">
+                <div class="roseIcon">🌹</div>
+                <span>الوردة الرابعة</span>
+            </div>
+
+            <div class="rose" onclick="openRose(5)">
+                <div class="roseIcon">🌹</div>
+                <span>الوردة الخامسة</span>
+            </div>
+
+            <div class="rose" onclick="openRose(6)">
+                <div class="roseIcon">🌹</div>
+                <span>الوردة السادسة</span>
+            </div>
+
+        </div>
+
+        <button class="btn" onclick="go(6)">
+            إلى السماء 🌙
+        </button>
+
+    </div>
+</section>
+
+
+<!-- ================= الشاشة 6 ================= -->
+
+<section class="screen bg4" id="s6">
+
+    <div class="stars"></div>
+
+    <div class="card">
+
+        <h2>سماء صغيرة لرانيا 🌙</h2>
+
+        <p>
+            اضغطي على النجوم واكتشفي ما تخفيه.
+        </p>
+
+        <div class="dreamGrid">
+
+            <div class="dream" onclick="openDream(1)">
+                <img src="dream1.png"
+                     alt="حلم 1"
+                     onerror="this.parentElement.style.background='linear-gradient(135deg,#35102d,#120713)'">
+            </div>
+
+            <div class="dream" onclick="openDream(2)">
+                <img src="dream2.png"
+                     alt="حلم 2"
+                     onerror="this.parentElement.style.background='linear-gradient(135deg,#35102d,#120713)'">
+            </div>
+
+            <div class="dream" onclick="openDream(3)">
+                <img src="dream3.png"
+                     alt="حلم 3"
+                     onerror="this.parentElement.style.background='linear-gradient(135deg,#35102d,#120713)'">
+            </div>
+
+            <div class="dream" onclick="openDream(4)">
+                <img src="dream4.png"
+                     alt="حلم 4"
+                     onerror="this.parentElement.style.background='linear-gradient(135deg,#35102d,#120713)'">
+            </div>
+
+            <div class="dream" onclick="openDream(5)">
+                <img src="dream5.png"
+                     alt="حلم 5"
+                     onerror="this.parentElement.style.background='linear-gradient(135deg,#35102d,#120713)'">
+            </div>
+
+            <div class="dream" onclick="openDream(6)">
+                <img src="dream6.png"
+                     alt="حلم 6"
+                     onerror="this.parentElement.style.background='linear-gradient(135deg,#35102d,#120713)'">
+            </div>
+
+        </div>
+
+        <button class="btn" onclick="go(7)">
+            هناك شيء أخير 🎁
+        </button>
+
+    </div>
+</section>
+
+
+<!-- ================= الشاشة 7 ================= -->
+
+<section class="screen bg3" id="s7">
+
+    <div class="particles"></div>
+
+    <div class="card">
+
+        <div style="font-size:55px">🎁</div>
+
+        <h2>الصندوق الأخير</h2>
+
+        <p>
+            هناك شيء أخفيته حتى النهاية...
+        </p>
+
+        <div class="gift" id="gift" onclick="openGift()">
+
+            <div class="giftLid"></div>
+
+            <div class="giftBody"></div>
+
+            <div class="ribbonV"></div>
+            <div class="ribbonH"></div>
+
+        </div>
+
+        <p id="giftText" class="small">
+            اضغطي على الصندوق 🎀
+        </p>
+
+    </div>
+</section>
+
+
+<!-- ================= النهاية ================= -->
+
+<section class="screen bg4" id="s8">
+
+    <div class="stars"></div>
+    <div class="particles"></div>
+
+    <div class="card">
+
+        <div class="finalHeart">💗</div>
+
+        <div class="finalName">
+            رانيا
+        </div>
+
+        <p style="font-size:18px;line-height:2.1">
+
+            إذا وصلتِ إلى هنا...
+
+            <br><br>
+
+            فقد وصلتِ إلى نهاية هذه الرحلة الصغيرة.
+
+            <br><br>
+
+            بعض المشاعر يصعب وضعها في كلمات، لكنني حاولت أن أجمع في هذه الصفحة ما أريد قوله بطريقة مختلفة.
+
+            <br><br>
+
+            لا أريد أن تكون الاختلافات سببًا في أن نتوقف عن فهم بعضنا.
+
+            <br><br>
+
+            أريد أن نتعلم من كل موقف كيف نتحدث مع بعضنا بشكل أفضل.
+
+            <br><br>
+
+            وأريد أن يبقى الاحترام والطمأنينة موجودين مهما اختلفنا.
+
+            <br><br>
+
+            <span class="name">
+                رانيا 🤍
+            </span>
+
+        </p>
+
+        <button class="btn" onclick="finale()">
+            اضغطي هنا... ✨
+        </button>
+
+    </div>
+</section>
+
+
+<!-- نافذة الرسائل -->
+
+<div class="modal" id="modal">
+
+    <div class="modalBox">
+
+        <div id="modalContent"></div>
+
+        <button class="btn secondary close" onclick="closeModal()">
+            إغلاق
+        </button>
+
+    </div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =========================================
+   الإعدادات
+========================================= */
+
+const PASSWORD = "الحوى";
+
+const music = document.getElementById("music");
+const musicBtn = document.getElementById("musicBtn");
+
+let currentScreen = 1;
+let musicStarted = false;
+
+
+/* =========================================
+   الانتقال بين الصفحات
+========================================= */
+
+function go(number){
+
+    document.querySelectorAll(".screen").forEach(screen=>{
+        screen.classList.remove("active");
+    });
+
+    const target = document.getElementById("s"+number);
+
+    if(target){
+        target.classList.add("active");
+        currentScreen = number;
+        updateProgress();
+        window.scrollTo(0,0);
+    }
+
+    playClick();
+}
+
+
+/* =========================================
+   بداية القصة + الموسيقى
+========================================= */
+
+function startStory(){
+
+    musicStarted = true;
+
+    music.volume = 0.35;
+
+    music.play()
+    .then(()=>{
+        musicBtn.textContent = "🎵";
+    })
+    .catch(()=>{
+        musicBtn.textContent = "🔇";
+    });
+
+    go(2);
+}
+
+
+/* =========================================
+   الموسيقى
+========================================= */
+
+function toggleMusic(){
+
+    if(music.paused){
+
+        music.play()
+        .then(()=>{
+            musicBtn.textContent="🎵";
+        })
+        .catch(()=>{});
+
+    }else{
+
+        music.pause();
+        musicBtn.textContent="🔇";
+
+    }
+
+    playClick();
+}
+
+
+/* =========================================
+   كلمة السر
+========================================= */
+
+function checkPassword(){
+
+    const input = document.getElementById("password");
+    const error = document.getElementById("error");
+
+    if(input.value === PASSWORD){
+
+        error.textContent = "تم فتح القفل 🤍";
+
+        setTimeout(()=>{
+            go(4);
+        },700);
+
+    }else{
+
+        error.textContent = "الكلمة غير صحيحة... حاولي مرة أخرى 🌹";
+
+        input.value = "";
+
+        shake(input);
+    }
+
+    playClick();
+}
+
+
+/* =========================================
+   اهتزاز العنصر
+========================================= */
+
+function shake(element){
+
+    element.animate(
+        [
+            {transform:"translateX(0)"},
+            {transform:"translateX(-8px)"},
+            {transform:"translateX(8px)"},
+            {transform:"translateX(-5px)"},
+            {transform:"translateX(5px)"},
+            {transform:"translateX(0)"}
+        ],
+        {
+            duration:400
+        }
+    );
+}
+
+
+/* =========================================
+   رسائل الورود
+========================================= */
+
+const roseMessages = {
+
+    1:{
+        title:"لماذا أنتِ؟ 🌹",
+        text:"لأنك أصبحتِ شخصًا له مكان خاص جدًا في حياتي، وليس مجرد شخص عابر."
+    },
+
+    2:{
+        title:"شيء أحبه فيكِ 🤍",
+        text:"أحب التفاصيل الصغيرة في شخصيتك، وطريقتك، والأشياء التي ربما لا تنتبهين إليها في نفسك."
+    },
+
+    3:{
+        title:"عندما تظهر الغيرة 🌹",
+        text:"أتعلم أن أفرق بين أن أشعر بالغيرة وبين أن أجعل هذا الشعور ضغطًا عليك."
+    },
+
+    4:{
+        title:"عندما أفتقدكِ 🌙",
+        text:"أحيانًا لا أحتاج إلى سبب حتى أتذكرك؛ تكفي لحظة هادئة لأجد اسمك في أفكاري."
+    },
+
+    5:{
+        title:"شيء لا يقال كثيرًا ✨",
+        text:"وجود شخص مهم في حياتك يستحق أن تشكره، وأنا أقدّر وجودك في حياتي."
+    },
+
+    6:{
+        title:"إذا حدث خلاف 🤍",
+        text:"الخلاف لا يجب أن يمحو كل الأشياء الجميلة. الأهم أن نتعلم كيف نفهم بعضنا بعده."
+    }
+
+};
+
+
+function openRose(number){
+
+    const data = roseMessages[number];
+
+    document.getElementById("modalContent").innerHTML = `
+        <div style="font-size:55px">🌹</div>
+        <h2>${data.title}</h2>
+        <p>${data.text}</p>
+    `;
+
+    document.getElementById("modal").classList.add("show");
+
+    playClick();
+}
+
+
+/* =========================================
+   رسائل النجوم
+========================================= */
+
+const dreams = {
+
+    1:{
+        title:"⭐ حلم صغير",
+        text:"أن يكون المستقبل مليئًا بأيام جميلة وذكريات تستحق أن نتذكرها."
+    },
+
+    2:{
+        title:"⭐ النجاح",
+        text:"أن تري نفسك يومًا في المكان الذي تتمنينه، وأن تكوني فخورة بما وصلتِ إليه."
+    },
+
+    3:{
+        title:"⭐ السفر",
+        text:"أماكن جديدة، سماء مختلفة، وتجارب جميلة لا تنتهي."
+    },
+
+    4:{
+        title:"⭐ الضحك",
+        text:"من أجمل الأشياء أن تبقى هناك لحظات بسيطة تجعلنا نضحك مهما كان اليوم صعبًا."
+    },
+
+    5:{
+        title:"⭐ الأيام الصعبة",
+        text:"لن تكون كل الأيام مثالية، لكن يمكن دائمًا أن نتعلم كيف نتجاوز الصعب بطريقة أفضل."
+    },
+
+    6:{
+        title:"⭐ المستقبل",
+        text:"لا أحد يعرف ماذا سيكتب المستقبل، لكن أتمنى أن يكون لك مكان جميل فيه."
+    }
+
+};
+
+
+function openDream(number){
+
+    const data = dreams[number];
+
+    document.getElementById("modalContent").innerHTML = `
+        <div style="font-size:55px">✨</div>
+        <h2>${data.title}</h2>
+        <p>${data.text}</p>
+    `;
+
+    document.getElementById("modal").classList.add("show");
+
+    playClick();
+}
+
+
+function closeModal(){
+
+    document.getElementById("modal").classList.remove("show");
+
+    playClick();
+}
+
+
+/* =========================================
+   صندوق الهدية
+========================================= */
+
+function openGift(){
+
+    const gift = document.getElementById("gift");
+
+    if(gift.classList.contains("open")) return;
+
+    gift.classList.add("open");
+
+    document.getElementById("giftText").textContent =
+        "لقد فتحتِ الصندوق... ✨";
+
+    playClick();
+
+    setTimeout(()=>{
+
+        createExplosion();
+
+        setTimeout(()=>{
+            go(8);
+        },1300);
+
+    },900);
+}
+
+
+/* =========================================
+   انفجار القلوب
+========================================= */
+
+function createExplosion(){
+
+    const container = document.querySelector("#s8 .particles");
+
+    for(let i=0;i<45;i++){
+
+        const item = document.createElement("div");
+
+        item.className = "heart";
+
+        item.textContent =
+            Math.random() > .5 ? "♥" : "✨";
+
+        item.style.left = "50%";
+        item.style.bottom = "45%";
+
+        const angle = Math.random()*Math.PI*2;
+        const distance = 150 + Math.random()*300;
+
+        const x = Math.cos(angle)*distance;
+        const y = Math.sin(angle)*distance;
+
+        item.animate(
+            [
+                {
+                    transform:"translate(-50%,-50%) scale(.2)",
+                    opacity:1
+                },
+                {
+                    transform:
+                    `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(1.4)`,
+                    opacity:0
+                }
+            ],
+            {
+                duration:1200 + Math.random()*700,
+                easing:"ease-out"
+            }
+        );
+
+        container.appendChild(item);
+
+        setTimeout(()=>{
+            item.remove();
+        },2000);
+    }
+}
+
+
+/* =========================================
+   المؤثر الصوتي عند الضغط
+========================================= */
+
+let audioContext = null;
+
+function playClick(){
+
+    try{
+
+        if(!audioContext){
+
+            audioContext =
+                new (window.AudioContext ||
+                     window.webkitAudioContext)();
+
+        }
+
+        const oscillator =
+            audioContext.createOscillator();
+
+        const gain =
+            audioContext.createGain();
+
+        oscillator.type = "sine";
+
+        oscillator.frequency.setValueAtTime(
+            520,
+            audioContext.currentTime
+        );
+
+        oscillator.frequency.exponentialRampToValueAtTime(
+            780,
+            audioContext.currentTime + 0.08
+        );
+
+        gain.gain.setValueAtTime(
+            0.0001,
+            audioContext.currentTime
+        );
+
+        gain.gain.exponentialRampToValueAtTime(
+            0.045,
+            audioContext.currentTime + 0.01
+        );
+
+        gain.gain.exponentialRampToValueAtTime(
+            0.0001,
+            audioContext.currentTime + 0.12
+        );
+
+        oscillator.connect(gain);
+        gain.connect(audioContext.destination);
+
+        oscillator.start();
+        oscillator.stop(audioContext.currentTime + 0.13);
+
+    }catch(e){}
+
+}
+
+
+/* =========================================
+   القلوب والورود المتحركة
+========================================= */
+
+function createFloating(){
+
+    document.querySelectorAll(".particles").forEach(container=>{
+
+        const item = document.createElement("div");
+
+        item.className =
+            Math.random() > .35 ? "heart" : "petal";
+
+        item.textContent =
+            item.className === "heart"
+            ? (Math.random()>0.5 ? "♥" : "♡")
+            : "🌸";
+
+        item.style.left =
+            Math.random()*100 + "%";
+
+        item.style.fontSize =
+            (12 + Math.random()*18) + "px";
+
+        const duration =
+            6 + Math.random()*7;
+
+        item.style.animationDuration =
+            duration + "s";
+
+        container.appendChild(item);
+
+        setTimeout(()=>{
+            item.remove();
+        },duration*1000);
+
+    });
+
+}
+
+setInterval(createFloating,650);
+
+
+/* =========================================
+   النجوم
+========================================= */
+
+function createStars(){
+
+    document.querySelectorAll(".stars").forEach(container=>{
+
+        for(let i=0;i<35;i++){
+
+            const star = document.createElement("div");
+
+            star.className = "star";
+
+            star.style.left =
+                Math.random()*100 + "%";
+
+            star.style.top =
+                Math.random()*100 + "%";
+
+            star.style.animationDelay =
+                Math.random()*3 + "s";
+
+            star.style.animationDuration =
+                (1.5 + Math.random()*3) + "s";
+
+            container.appendChild(star);
+
+        }
+
+    });
+
+}
+
+createStars();
+
+
+/* =========================================
+   شريط التقدم
+========================================= */
+
+function updateProgress(){
+
+    const progress =
+        ((currentScreen-1)/7)*100;
+
+    document.getElementById("progress")
+        .style.width = progress + "%";
+}
+
+
+/* =========================================
+   النهاية
+========================================= */
+
+function finale(){
+
+    playClick();
+
+    const s8 =
+        document.getElementById("s8");
+
+    s8.innerHTML = `
+        <div class="stars"></div>
+        <div class="particles"></div>
+
+        <div class="card">
+
+            <div style="font-size:65px">
+                🤍
+            </div>
+
+            <div class="finalName">
+                رانيا
+            </div>
+
+            <p style="font-size:21px">
+                وهذه المرة...
+                <br><br>
+                لا توجد رسالة بعدها.
+                <br><br>
+                فقط لحظة جميلة 🤍
+            </p>
+
+        </div>
+    `;
+
+    createStars();
+
+    for(let i=0;i<60;i++){
+
+        setTimeout(()=>{
+            createExplosion();
+        },i*30);
+
+    }
+
+}
+
+
+/* =========================================
+   إغلاق النافذة بالضغط خارجها
+========================================= */
+
+document.getElementById("modal")
+.addEventListener("click",function(e){
+
+    if(e.target === this){
+        closeModal();
+    }
+
+});
+
+
+/* =========================================
+   Enter في كلمة السر
+========================================= */
+
+document.getElementById("password")
+.addEventListener("keydown",function(e){
+
+    if(e.key === "Enter"){
+        checkPassword();
+    }
+
+});
+
+
+/* =========================================
+   منع سحب الصور
+========================================= */
+
+document.addEventListener("dragstart",function(e){
+
+    if(e.target.tagName === "IMG"){
+        e.preventDefault();
+    }
+
+});
+
+
+updateProgress();
+
+</script>
+
+</body>
+</html>
